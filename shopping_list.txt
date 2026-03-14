@@ -1,0 +1,11 @@
+🛒 SHOPPING LIST
+========================================
+🟡 Medium Banana          Qty:4  (Expires in 1 days)
+🟡 Medium Milk            Qty:2  (Expires in 0 days)
+🔴 High Tomato          Qty:4  (Not in stock)
+🔴 High Onion           Qty:5  (Not in stock)
+🔴 High Potato          Qty:5  (Not in stock)
+🔴 High Egg             Qty:10  (Not in stock)
+🔴 High Bread           Qty:1  (Not in stock)
+🔴 High Broccoli        Qty:3  (Not in stock)
+🔴 High Orange          Qty:4  (Not in stock)

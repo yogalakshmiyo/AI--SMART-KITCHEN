@@ -1,0 +1,27 @@
+{
+  "apple": {
+    "quantity": 5,
+    "expiry_date": "2026-03-20",
+    "added_on": "2026-03-14"
+  },
+  "banana": {
+    "quantity": 3,
+    "expiry_date": "2026-03-15",
+    "added_on": "2026-03-14"
+  },
+  "milk": {
+    "quantity": 2,
+    "expiry_date": "2026-03-14",
+    "added_on": "2026-03-14"
+  },
+  "carrot": {
+    "quantity": 8,
+    "expiry_date": "2026-03-25",
+    "added_on": "2026-03-14"
+  },
+  "cake": {
+    "quantity": 1,
+    "expiry_date": "2026-03-13",
+    "added_on": "2026-03-14"
+  }
+}
