@@ -1,36 +1,40 @@
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import PIL.Image
-import os, json, re
+import os
 
 GEMINI_API_KEY = os.environ.get(
     'GEMINI_API_KEY',
     'AIzaSyDsGlirmdbDL82qLPywe_X4mcB6H7h'
 )
-genai.configure(api_key=GEMINI_API_KEY)
+
+client = genai.Client(api_key=GEMINI_API_KEY)
 
 def detect_ingredients(image_path: str):
     try:
         img = PIL.Image.open(image_path).convert('RGB')
-        model = genai.GenerativeModel('gemini-1.5-flash')
 
-        prompt = """What food items do you see in this image?
-List each food item separated by commas.
-Example: potato, tomato, onion, rice
-Just list the foods, nothing else."""
+        response = client.models.generate_content(
+            model='gemini-2.0-flash',
+            contents=[
+                "List all food items you see in this image. "
+                "Write only the food names separated by commas. "
+                "Example: potato, tomato, onion. "
+                "Just food names, nothing else.",
+                img
+            ]
+        )
 
-        response = model.generate_content([prompt, img])
         text = response.text.strip()
-        print(f"Gemini said: {text}")
+        print(f"Gemini: {text}")
 
-        # Parse comma-separated response
         items = [i.strip().lower() for i in text.split(',')]
-        items = [i for i in items if len(i) > 1 and len(i) < 30]
-        # Remove non-food words
-        bad_words = ['the','a','an','and','or','with','some',
-                     'fresh','raw','cooked','food','item','image',
-                     'photo','picture','see','shows']
-        items = [i for i in items if i not in bad_words]
-        
+        items = [i for i in items if 1 < len(i) < 30]
+        bad = ['the','a','an','and','or','with','some','fresh',
+               'raw','cooked','food','item','image','photo',
+               'picture','see','shows','here','are','is','i']
+        items = [i for i in items if i not in bad]
+
         print(f"✅ Detected: {items[:10]}")
         return items[:10]
 

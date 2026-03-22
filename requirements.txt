@@ -3,5 +3,5 @@ ultralytics
 opencv-python-headless
 pillow
 numpy
-google-generativeai
+google-genai
 requests
